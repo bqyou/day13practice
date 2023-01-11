@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: black;
+            font-family: Input Mono, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(243, 233, 145);
+        }
+        .normal{
+            font-size: 20pt;
+        }
+        .normalred{
+            font-size: 20pt;
+            font-weight:bold;
+            color: red;
+        }
+        .huge {
+            font-weight: bold;
+            font-size: 200pt;
+        }
+
+        .medium {
+            font-weight: bold;
+            font-size: 50pt;
+        }
+    </style>
+    <title>Result</title>
+</head>
+<body>
+    <div class="normal">
+    <pr data-th-object="${user}">
+    <h1>ALO <span data-th-text="*{username}"></span> (<span data-th-text="*{id}"></span>),</h1>
+    <br>
+    Your basal metabolism rate (BMR) is <span class=medium data-th-text="*{baseMR}"></span> kcal per day.
+    <br>
+    <br>
+    Your active metabolism rate (AMR) is <span  class=medium data-th-text="*{activeMR}"></span> kcal per day, which is equivalent to 
+    <br>
+    <pr>
+    <pr class=huge data-th-text="*{mcSpicy}"></pr><span class="huge"> X </span><img src="https://www.mcdonalds.com.sg/sites/default/files/2021-09/McSpicy.png"/>
+    </pr>
+    <br>
+    What are you planning to eat today? 
+    <br>
+    <form
+        action="#"
+        data-th-action="@{/home/logfood}"
+        method="get">
+        
+        <input type="submit" value="YUM">
+        
+
+    </form>
+    <br>
+    </div>
+</body>
+</html>

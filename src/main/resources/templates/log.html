@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .error {
+            color: red
+        }
+
+        body{
+            background-color: rgb(68, 64, 64);
+            font-family: Input Mono, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(243, 233, 145);
+        }
+        .normalred{
+            font-size: 20pt;
+            font-weight:bold;
+            color: red;
+        }
+        .normal{
+            font-size: 20pt;
+            font-weight:bold;
+        }
+        .huge {
+            font-weight: bold;
+            font-size: 200pt;
+        }
+
+        .medium {
+            font-weight: bold;
+            font-size: 30pt;
+        }
+
+        .bolded {
+            font-weight: bold;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <form
+        action="#"
+        data-th-object="${foodlist}"
+        method="get">
+    Your remaining calories : <span class=normalred data-th-text="*{amr}"></span> kcal.
+    <br>
+    </form>
+    <br>
+    <br>
+    <form
+        action="#"
+        data-th-object="${food}"
+        data-th-action="@{/home/log}"
+        method="post">
+    <span class=normal>Please log your food below &#127828</span>
+    <br><br>
+    Food Name:
+    <input type="text" data-th-field="*{name}">
+    <br>
+    <span class="error" data-th-if="${#fields.hasErrors('name')}"
+                data-th-errors="*{name}"></span>
+    <br>
+
+    Type: <br><br>
+    <input type="radio" data-th-field="*{type}" data-th-value = "Protein">Protein <br>
+    <input type="radio" data-th-field="*{type}" data-th-value = "Fats">Fats <br>
+    <input type="radio" data-th-field="*{type}" data-th-value = "Carbo">Carbo <br>
+    <span class="error" data-th-if="${#fields.hasErrors('type')}"
+                data-th-errors="*{type}"></span>
+    <br>
+    
+    Serving size: <br><br>
+    <input type="radio" data-th-field="*{size}" data-th-value = "Smol">Smol <br>
+    <input type="radio" data-th-field="*{size}" data-th-value = "Med">Med <br>
+    <input type="radio" data-th-field="*{size}" data-th-value = "HUGE">HUGE <br>
+    <span class="error" data-th-if="${#fields.hasErrors('size')}"
+                data-th-errors="*{size}"></span>
+    <br>
+    <input type="submit" value="Log">
+    </form>
+    <form
+        action="#"
+        data-th-action="@{/home/clear}"
+        method="post">
+        <input type="submit" value="Clear">
+    </form>
+
+    <br><br>
+    <pr data-th-object="${foodlist}">
+    <table style="text-align: center; width:25%; word-wrap: break-word">
+        <span class="medium">Your food ⬇<br><br></span>
+        <tr></tr>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th>Type</th>
+            <th></th>
+            <th>Size </th>
+            <th></th>
+            <th>kCal</th>
+        </tr>
+        <tr th:each="food: *{foodList}">
+        <td data-th-text="${food.name}"></td>
+        <td></td>
+        <td data-th-text="${food.type}"></td>
+        <td></td>
+        <td data-th-text="${food.size}"></td>
+        <td></td>
+        <td data-th-text="${food.cal}"></td>
+        </tr>
+    </table>
+    </pr>
+
+</body>
+</html>

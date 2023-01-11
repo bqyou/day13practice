@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: rgb(68, 64, 64);
+            font-family: Input Mono, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: rgb(243, 233, 145);
+        }
+        .normal{
+            font-size: 20pt;
+        }
+        .huge {
+            font-weight: bold;
+            font-size: 200pt;
+        }
+
+        .medium {
+            font-weight: bold;
+            font-size: 50pt;
+        }
+
+        .error{
+            color: red;
+        }
+    </style>
+    <title>Calories calculator</title>
+</head>
+<body>
+    <p class="normal"><strong>&#127839 Calories Calculator &#127839</strong></p><img src=""
+    <p>
+        <form
+            action="#"
+            data-th-action="@{/home}"
+            data-th-object="${user}"
+            method="post">
+            <p>
+            Name &#9997: <input type="text" data-th-field="*{username}" autocomplete="off">
+            <br>
+            <span class="error" data-th-if="${#fields.hasErrors('username')}"
+                data-th-errors="*{username}"></span>
+            </p>
+            <p>
+            Gender &#128107: 
+            <br>
+            <input type="radio" data-th-field="*{gender}" data-th-value = "male"><label for ="male">Male</label>
+            <input type="radio" data-th-field="*{gender}" data-th-value = "female"><label for ="male">Female</label>
+            <br>
+            <span class="error" data-th-if="${#fields.hasErrors('gender')}"
+                data-th-errors="*{gender}"></span>
+            </p>
+            <p>
+            Age &#127874: <input type="number" data-th-field="*{age}">
+            <br>
+            <span class="error" data-th-if="${#fields.hasErrors('age')}"
+                data-th-errors="*{age}"></span>
+            </p>
+            <p>
+            Height (m) &#128207: <input type="number" step="0.01" data-th-field="*{height}">
+            <br>
+            <span class="error" data-th-if="${#fields.hasErrors('height')}"
+                data-th-errors="*{height}"></span>
+            </p>
+            <p>
+            Weight (kg) &#9878: <input type="number" step="0.1" data-th-field="*{weight}">
+            <br>
+            <span class="error" data-th-if="${#fields.hasErrors('weight')}"
+                data-th-errors="*{weight}"></span>
+            </p>
+            <p>
+                Lifestyle: 
+                <br>
+                <input type="radio" data-th-field="*{lifestyle}" data-th-value = "1"> Sedentary (little or no exercise)
+                <br>
+                <input type="radio" data-th-field="*{lifestyle}" data-th-value = "2"> Lightly active (exercise 1-3 days/week)
+                <br>
+                <input type="radio" data-th-field="*{lifestyle}" data-th-value = "3"> Moderately active (exercise 3-5 days/week)
+                <br>
+                <input type="radio" data-th-field="*{lifestyle}" data-th-value = "4"> Active (exercise 6-7 days/week)
+                <br>
+                <input type="radio" data-th-field="*{lifestyle}" data-th-value = "5"> Very active (hardcore exercise 6-7 days/week)
+                <br>
+                <span class="error" data-th-if="${#fields.hasErrors('lifestyle')}"
+                    data-th-errors="*{lifestyle}"></span>
+            </p>
+            
+            
+
+            <input type="submit" value="Calculate"></input>      
+        
+        </form>
+    </p>
+</body>
+</html>
